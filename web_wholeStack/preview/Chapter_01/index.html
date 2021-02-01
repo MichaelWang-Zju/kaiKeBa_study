@@ -14,8 +14,27 @@
  
 </head>
 <body>
-hello world！
-<script src="01_hello.js"></script>
+  <!-- 宿主文件 -->
+
+  <div id="app">
+    {{title}}
+  </div>
+<script src="vue.js"></script>
+<script>
+  // 1、创建vue的实例
+  const app = new Vue({
+    el: '#app',
+    data() {
+      return {
+        title: 'hello,vue'
+      }
+    },
+  })
+
+  setTimeout(() => {
+    app.title = 'mumuda, vue';
+  }, 1000);
+</script>
 </body>
 
 </html>
