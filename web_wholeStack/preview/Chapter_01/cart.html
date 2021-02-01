@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!--<meta http-equiv="X-UA-Compatible" content="IE=11">-->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <title>购物车</title>
+ <style>
+   .active {
+     background-color: #ddd;
+   }
+ </style>
+</head>
+<body>
+  <!-- 宿主文件 -->
+
+  <div id="app">
+    <h2 :title="title11">
+      <!-- 插值文本 -->
+      {{title}}
+    </h2>
+
+    <!-- 用户输入 -->
+    <p><input v-model="courseModel" type="text" v-on:keydown.enter="addCourse"/>
+      <button @click="addCourse">新增</button>
+      {{courseModel}}
+    </p>
+    <!-- 条件渲染 -->
+    <p v-if="counses.length==0">没有任何课程信息</p>
+    <!-- 列表渲染 -->
+    <!-- <div v-for="oneCounse in counses" :key="oneCounse"
+     :class="{active: selectedCourse === oneCounse}" @click="selectedCourse = oneCounse">
+      {{ oneCounse }}
+    </div> -->
+    <!-- style -->
+    <div class="course_list" v-else>
+      <div v-for="oneCounse in counses" :key="oneCounse"
+      :style="{backgroundColor: selectedCourse===oneCounse?'#ddd':'transparent'}" @click="selectedCourse = oneCounse">
+       {{ oneCounse }}
+     </div>
+    </div>
+
+    <!-- <ul>
+      <li>
+
+    </li>
+  </ul> -->
+  </div>
+<script src="vue.js"></script>
+<script>
+  // 1、创建vue的实例
+  const app = new Vue({
+    el: '#app',
+    data() {
+      return {
+        title: '开课吧，购物车222',
+        title11: 'samen good',
+        courseModel: '',
+        // counses:['web全栈', 'web高级'],
+        counses:[],
+        selectedCourse: ''
+      }
+    },
+    methods: {
+      addCourse() {
+        this.counses.push(this.courseModel);
+        this.courseModel = '';
+      }
+    },
+  })
+
+</script>
+</body>
+
+</html>

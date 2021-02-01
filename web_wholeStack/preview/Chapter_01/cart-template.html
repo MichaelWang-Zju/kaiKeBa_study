@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!--<meta http-equiv="X-UA-Compatible" content="IE=11">-->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <title>购物车render版</title>
+ <style>
+   .active {
+     background-color: #ddd;
+   }
+ </style>
+</head>
+<body>
+  <!-- 宿主文件 -->
+
+  <div id="app"></div>
+<script src="vue.js"></script>
+<script>
+  // 1、创建vue的实例
+  const app = new Vue({
+    el: '#app',
+    data() {
+      return {
+        title: '开课吧，购物车222',
+        title11: 'samen good',
+        courseModel: '',
+        counses:['web全栈', 'web高级'],
+        // counses:[],
+        selectedCourse: ''
+      }
+    },
+    methods: {
+      addCourse() {
+        this.counses.push(this.courseModel);
+        this.courseModel = '';
+      }
+    },
+    render() {
+      with (this) {
+        return _c('div',{attrs:{"id":"app"}},[_c('h2',{attrs:{"title":title11}},[_v("\n      "+_s(title)+"\n    ")]),_v(" "),_c('p',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(courseModel),expression:"courseModel"}],attrs:{"type":"text"},domProps:{"value":(courseModel)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_k($event.keyCode,"enter",13,$event.key,"Enter"))return null;return addCourse($event)},"input":function($event){if($event.target.composing)return;courseModel=$event.target.value}}}),_v(" "),_c('button',{on:{"click":addCourse}},[_v("新增")]),_v("\n      "+_s(courseModel)+"\n    ")]),_v(" "),(counses.length==0)?_c('p',[_v("没有任何课程信息")]):_c('div',{staticClass:"course_list"},_l((counses),function(oneCounse){return _c('div',{key:oneCounse,style:({backgroundColor: selectedCourse===oneCounse?'#ddd':'transparent'}),on:{"click":function($event){selectedCourse = oneCounse}}},[_v("\n       "+_s(oneCounse)+"\n     ")])}),0)])  
+      }
+      
+    },
+  })
+
+  console.log('app_render', app.$options.render);
+  
+//   (function anonymous(
+// ) {
+// with(this){return _c('div',{attrs:{"id":"app"}},[_c('h2',{attrs:{"title":title11}},[_v("\n      "+_s(title)+"\n    ")]),_v(" "),_c('p',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(courseModel),expression:"courseModel"}],attrs:{"type":"text"},domProps:{"value":(courseModel)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_k($event.keyCode,"enter",13,$event.key,"Enter"))return null;return addCourse($event)},"input":function($event){if($event.target.composing)return;courseModel=$event.target.value}}}),_v(" "),_c('button',{on:{"click":addCourse}},[_v("新增")]),_v("\n      "+_s(courseModel)+"\n    ")]),_v(" "),(counses.length==0)?_c('p',[_v("没有任何课程信息")]):_c('div',{staticClass:"course_list"},_l((counses),function(oneCounse){return _c('div',{key:oneCounse,style:({backgroundColor: selectedCourse===oneCounse?'#ddd':'transparent'}),on:{"click":function($event){selectedCourse = oneCounse}}},[_v("\n       "+_s(oneCounse)+"\n     ")])}),0)])}
+// })
+
+</script>
+</body>
+
+</html>
